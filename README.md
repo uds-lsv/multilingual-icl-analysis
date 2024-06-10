@@ -24,7 +24,7 @@ on diverse models and tasks.
 - [MAFAND](https://huggingface.co/datasets/masakhane/mafand)
 
 ## Setup
-Create your docker image or virtual environment based on the provided docker file (./Dockerfile). Specifically,
+Create your docker image or virtual environment based on the provided docker file ([Dockerfile](https://github.com/uds-lsv/multilingual-icl-analysis/blob/master/Dockerfile)). Specifically,
 ```
 python: 3.8
 torch: 1.14.0
