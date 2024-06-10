@@ -16,4 +16,4 @@ Example scripts are provided here for reproducing results.
   - `random`: random selection
   - `flip`: corrupted labels
   - `topk`: the top-k most similar demonstrations
-- `template`: prompting template set in configuration files
+- `template`: prompting template specified in configuration files
