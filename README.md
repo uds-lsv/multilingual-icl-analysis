@@ -46,6 +46,6 @@ CUDA: 11.8.0
 - Thanks to the [OpenICL](https://github.com/Shark-NLP/OpenICL) codebase 
 and Microsoft Azure. 
 
-
-
+## Contact
+Miaoran Zhang (mzhang@lsv.uni-saarland.de)
 
