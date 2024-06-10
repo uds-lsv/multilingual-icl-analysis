@@ -1,0 +1,95 @@
+hf: juletxara/xstory_cloze
+input_columns:
+  - input_sentence_1
+  - input_sentence_2
+  - input_sentence_3
+  - input_sentence_4
+  - sentence_quiz1
+  - sentence_quiz2
+output_column: answer_right_ending
+n_labels: 2
+languages:
+  - en
+  - ru
+  - es
+  - zh
+  - id
+  - ar
+  - hi
+  - eu
+  - te
+  - my
+  - sw
+language_names:
+  - English
+  - Russian
+  - Spanish
+  - Chinese
+  - Indonesian
+  - Arabic
+  - Hindi
+  - Basque
+  - Telugu
+  - Burmese
+  - Swahili
+index_split: train
+test_split: eval
+
+column_token_map:
+  input_sentence_1: </X1>
+  input_sentence_2: </X2>
+  input_sentence_3: </X3>
+  input_sentence_4: </X4>
+  sentence_quiz1: </C1>
+  sentence_quiz2: </C2>
+ice_token: </E>
+sep_token: </S>
+
+completion_template:
+  prompt_template:
+    1: </E></X1> </X2> </X3> </X4> </S></C1>
+    2: </E></X1> </X2> </X3> </X4> </S></C2>
+
+instruction_template:
+  prompt_template:
+    1: </E></X1> </X2> </X3> </X4>\nWhat is a possible continuation for the story given the following options?\n- </C1>\n- </C2>\n</S></C1>
+    2: </E></X1> </X2> </X3> </X4>\nWhat is a possible continuation for the story given the following options?\n- </C1>\n- </C2>\n</S></C2>
+
+chat_template:
+  system: >    
+    You are an AI assistant whose purpose is to perform open-domain commonsense causal reasoning in EVALUATION_LANGUAGE.
+    You will be provided a four-sentence story and two continuations, where the task is to select the correct ending. 
+    Answer as concisely as possible in the same format as the examples below:
+  input_template: >
+    Story: </X1> </X2> </X3> </X4>
+    
+    What is a possible continuation for the story? Pick the more plausible option:
+    
+    1: </C1>
+    
+    2: </C2>
+    
+    You should tell me the choice number in this format 'Choice number:'
+  output_template:
+    1: "Choice number: 1"
+    2: "Choice number: 2"
+
+chat_template_1:
+  system: >    
+    You are an AI assistant whose purpose is to perform open-domain commonsense causal reasoning in EVALUATION_LANGUAGE.
+    You will be provided a four-sentence story and two continuations, where the task is to select the correct ending. 
+    Answer as concisely as possible in the same format as the examples below:
+  input_template: >
+    Story: </X1> </X2> </X3> </X4>
+    
+    What is a possible continuation for the story? Pick the more plausible option:
+    
+    1: </C1>
+    
+    2: </C2>
+    
+    You should tell me the choice number in this format 'Choice number:'. Do not repeat the question.
+  output_template:
+    1: "Choice number: 1"
+    2: "Choice number: 2"
+

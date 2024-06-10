@@ -1,0 +1,78 @@
+hf: shmuhammad/AfriSenti-twitter-sentiment
+input_columns:
+  - tweet
+output_column: label
+n_labels: 3
+languages:
+  - swa
+  - amh
+  - hau
+  - kin
+  - yor
+  - tir
+  - ibo
+  - orm
+  - ary
+  - arq
+  - pcm
+  - por
+  - tso
+  - twi
+language_names:
+  - Swahili
+  - Amharic
+  - Hausa
+  - Kinyarwanda
+  - Yoruba
+  - Tigrinya
+  - Igbo
+  - Oromo
+  - Moroccan Arabic
+  - Algerian Arabic
+  - Nigerian Pidgin
+  - Mozambican Portuguese
+  - Tsonga
+  - Twi
+index_split: validation
+test_split: test
+
+column_token_map:
+  tweet: </X1>
+ice_token: </E>
+sep_token: </S>
+
+completion_template:
+  prompt_template:
+    0: </E></X1> The sentiment of the previous sentence is </S>positive
+    1: </E></X1> The sentiment of the previous sentence is </S>neutral
+    2: </E></X1> The sentiment of the previous sentence is </S>negative
+
+instruction_template:
+  prompt_template:
+    0: </E></X1> Would you rate the previous sentence as positive, neutral or negative? </S>positive
+    1: </E></X1> Would you rate the previous sentence as positive, neutral or negative? </S>neutral
+    2: </E></X1> Would you rate the previous sentence as positive, neutral or negative? </S>negative
+
+chat_template:
+  system: >
+    You are an NLP assistant whose purpose is to perform Sentiment Analysis in EVALUATION_LANGUAGE.
+    Sentiment Analysis is the task of determining the sentiment, opinion or emotion expressed in a textual data.
+    Give your answer as a single word, "positive", "neutral" or "negative".
+  input_template: Does this statement "</X1>" have a {positive neutral or negative} sentiment? Labels only
+  output_template:
+    0: "positive"
+    1: "neutral"
+    2: "negative"
+
+chat_template_star:
+  system: >
+    You are an NLP assistant whose purpose is to perform Sentiment Analysis in EVALUATION_LANGUAGE.
+    Sentiment Analysis is the task of determining the sentiment, opinion or emotion expressed in a textual data.
+    Give your answer as a single word, "positive", "neutral" or "negative".
+  input_template: >
+    Does this statement "</X1>" have a {positive neutral or negative} sentiment? This is very important: Do not repeat the question and no explanation. Labels only
+  output_template:
+    0: "positive"
+    1: "neutral"
+    2: "negative"
+

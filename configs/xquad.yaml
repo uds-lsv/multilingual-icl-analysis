@@ -1,0 +1,69 @@
+hf: xquad
+input_columns:
+  - context
+  - question
+output_column: answers
+languages:
+  - xquad.en
+  - xquad.de
+  - xquad.ru
+  - xquad.es
+  - xquad.zh
+  - xquad.vi
+  - xquad.tr
+  - xquad.ar
+  - xquad.el
+  - xquad.ro
+  - xquad.th
+  - xquad.hi
+language_names:
+  - English
+  - German
+  - Russian
+  - Spanish
+  - Chinese
+  - Vietnamese
+  - Turkish
+  - Arabic
+  - Greek
+  - Romanian
+  - Thai
+  - Hindi
+index_split: validation
+test_split: validation
+
+column_token_map:
+  context: </X1>
+  question: </X2>
+  answers: </A>
+ice_token: </E>
+
+completion_template:
+  preprocess_func: process_qa
+  ice_template: "</E></X1>\nQ:</X2>\nA:</A>"
+  prompt_template: "</E></X1>\nQ:</X2>\nA:"
+
+instruction_template:
+  preprocess_func: process_qa
+  ice_template: "</E></X1>\nQ: </X2>\nReferring to the passage above, the correct answer to the given question is:</A>"
+  prompt_template: "</E></X1>\nQ: </X2>\nReferring to the passage above, the correct answer to the given question is:"
+
+chat_template:
+  preprocess_func: process_qa
+  system: >
+    You are an NLP assistant whose purpose is to solve reading comprehension problems in EVALUATION_LANGUAGE.
+    You will be provided questions on a set of passages and you will need to provide the answer as it appears in the passage. 
+    The answer should be in the same language as the question and the passage.
+  input_template: "</X1>\nQ: </X2>\nReferring to the passage above, the correct answer to the given question is:"
+  output_template: "</A>"
+
+chat_template_star:
+  preprocess_func: process_qa
+  system: >
+    You are an NLP assistant whose purpose is to solve extractive question answering problems in EVALUATION_LANGUAGE.
+    Answer the question from the given passage.
+    Your answer should be directly extracted from the passage and be a single entity, name, or number, not a sentence.
+  input_template: "</X1>\nQ: </X2>\nThis is very important: Your answer should be directly extracted from the passage and be a single entity, 
+    name, or number, not a sentence."
+  output_template: "</A>"
+

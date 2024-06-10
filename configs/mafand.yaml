@@ -1,0 +1,60 @@
+hf: masakhane/mafand
+input_columns:
+  - source_lang
+  - target_lang
+  - source_text
+output_column: target_text
+languages:
+  - amh
+  - hau
+  - kin
+  - lug
+  - luo
+  - nya
+  - pcm
+  - sna
+  - swa
+  - tsn
+  - twi
+  - xho
+  - yor
+  - zul
+language_names:
+  - Amharic
+  - Hausa
+  - Kinyarwanda
+  - Luganda
+  - Luo
+  - Chichewa
+  - Nigerian Pidgin
+  - Shona
+  - Swahili
+  - Setswana
+  - Twi
+  - Xhosa
+  - Yoruba
+  - Zulu
+index_split: validation
+test_split: test
+
+column_token_map:
+  source_lang: </SL>
+  target_lang: </TL>
+  source_text: </ST>
+  target_text: </TT>
+ice_token: </E>
+
+completion_template:
+  ice_template: "</E></ST> = </TT>"
+  prompt_template: "</E></ST> = "
+
+instruction_template:
+  ice_template: "</E>Translate the following </SL> text to </TL>:\n</ST>\n</TT>"
+  prompt_template: "</E>Translate the following </SL> text to </TL>:\n</ST>\n"
+
+chat_template:
+  system: ""
+  input_template: "Translate the following </SL> text to </TL>: </ST>"
+  output_template: </TT>
+
+

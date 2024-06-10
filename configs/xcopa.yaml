@@ -1,0 +1,94 @@
+hf: xcopa
+input_columns:
+  - premise
+  - choice1
+  - choice2
+output_column: label
+n_labels: 2
+languages:
+  - zh
+  - it
+  - vi
+  - id
+  - tr
+  - th
+  - et
+  - ta
+  - sw
+  - ht
+  - qu
+language_names:
+  - Chinese
+  - Italian
+  - Vietnamese
+  - Indonesian
+  - Turkish
+  - Thai
+  - Estonian
+  - Tamil
+  - Swahili
+  - Haitian
+  - Quechua
+index_split: validation
+test_split: test
+
+column_token_map:
+  premise: </X>
+  choice1: </C1>
+  choice2: </C2>
+  question: </Q>
+ice_token: </E>
+sep_token: </S>
+
+completion_template:
+  preprocess_func: process_xcopa
+  prompt_template:
+    0: </E></X> </S></C1>
+    1: </E></X> </S></C2>
+
+instruction_template:
+  preprocess_func: process_xcopa2
+  prompt_template:
+    0: "</E></X>\nHelp me pick the more plausible option:\n- </C1>\n- </C2>\n</S></C1>"
+    1: "</E></X>\nHelp me pick the more plausible option:\n- </C1>\n- </C2>\n</S></C2>"
+
+chat_template:
+  system: >    
+    You are an AI assistant whose purpose is to perform open-domain commonsense causal reasoning in EVALUATION_LANGUAGE.
+    You will be provided a premise and two alternatives, where the task is to select the alternative
+    that more plausibly has a causal relation with the premise. 
+    Answer as concisely as possible in the same format as the examples below:
+  input_template: >
+    Premise: </X>
+    
+    What is the </Q>? Pick the more plausible option:
+    
+    1: </C1>
+    
+    2: </C2>
+    
+    You should tell me the choice number in this format 'Choice number:'
+  output_template:
+    0: "Choice number: 1"
+    1: "Choice number: 2"
+
+chat_template_star:
+  system: >    
+    You are an AI assistant whose purpose is to perform open-domain commonsense causal reasoning in EVALUATION_LANGUAGE.
+    You will be provided a premise and two alternatives, where the task is to select the alternative
+    that more plausibly has a causal relation with the premise. 
+    Answer as concisely as possible in the same format as the examples below:
+  input_template: >
+    Premise: </X>
+    
+    What is the </Q>? Pick the more plausible option:
+    
+    1: </C1>
+    
+    2: </C2>
+    
+    This is very important:  Do not repeat the question and no explanation. You should tell me the choice number in this format 'Choice number:'
+  output_template:
+    0: "Choice number: 1"
+    1: "Choice number: 2"
+

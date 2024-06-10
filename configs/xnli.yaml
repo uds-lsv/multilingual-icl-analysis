@@ -1,0 +1,69 @@
+hf: xnli
+input_columns:
+  - premise
+  - hypothesis
+output_column: label
+n_labels: 3
+languages:
+  - en
+  - de
+  - ru
+  - fr
+  - es
+  - zh
+  - vi
+  - tr
+  - ar
+  - el
+  - th
+  - bg
+  - hi
+  - ur
+  - sw
+language_names:
+  - English
+  - German
+  - Russian
+  - French
+  - Spanish
+  - Chinese
+  - Vietnamese
+  - Turkish
+  - Arabic
+  - Greek
+  - Thai
+  - Bulgarian
+  - Hindi
+  - Urdu
+  - Swahili
+index_split: validation
+test_split: test
+
+column_token_map:
+    premise: </X1>
+    hypothesis: </X2>
+ice_token: </E>
+sep_token: </S>
+
+completion_template:
+  prompt_template:
+    0: </E></S></X1>, right? Yes, </X2>
+    1: </E></S></X1>, right? Also, </X2>
+    2: </E></S></X1>, right? No, </X2>
+
+instruction_template:
+  prompt_template:
+    0: "</E></X1> Based on the previous passage, is it true that </X2>? Yes, No, or Maybe? </S>Yes"
+    1: "</E></X1> Based on the previous passage, is it true that </X2>? Yes, No, or Maybe? </S>Maybe"
+    2: "</E></X1> Based on the previous passage, is it true that </X2>? Yes, No, or Maybe? </S>No"
+
+chat_template:
+  system: >
+    You are an NLP assistant whose purpose is to solve Natural Language Inference (NLI) problems in EVALUATION_LANGUAGE.
+    NLI is the task of determining the inference relation between two (short, ordered) texts: entailment, contradiction, or neutral.
+    Answer as concisely as possible in the same format as the examples below:
+  input_template: "</X1>\nQuestion: </X2>\nTrue, False, or Neither?"
+  output_template:
+    0: "True"
+    1: "Neither"
+    2: "False"

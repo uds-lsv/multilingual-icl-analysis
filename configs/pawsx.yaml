@@ -1,0 +1,51 @@
+hf: paws-x
+input_columns:
+  - sentence1
+  - sentence2
+output_column: label
+n_labels: 2
+languages:
+  - en
+  - de
+  - ja
+  - fr
+  - es
+  - zh
+  - ko
+language_names:
+  - English
+  - German
+  - Japanese
+  - French
+  - Spanish
+  - Chinese
+  - Korean
+index_split: validation
+test_split: test
+
+column_token_map:
+  sentence1: </X1>
+  sentence2: </X2>
+ice_token: </E>
+sep_token: </S>
+
+completion_template:
+  prompt_template:
+    0: </E></S></X1>, right? No, </X2>
+    1: </E></S></X1>, right? Yes, </X2>
+
+instruction_template:
+  prompt_template:
+    0: "</E>Sentence 1: </X1>\nSentence 2: </X2>\nQuestion: Can we rewrite Sentence 1 to Sentence 2? Yes or No? </S>No"
+    1: "</E>Sentence 1: </X1>\nSentence 2: </X2>\nQuestion: Can we rewrite Sentence 1 to Sentence 2? Yes or No? </S>Yes"
+
+chat_template:
+  system: >
+    You are an NLP assistant whose purpose is to perform Paraphrase Identification in EVALUATION_LANGUAGE.
+    The goal of Paraphrase Identification is to determine whether a pair of sentences have the same meaning.
+    Answer as concisely as possible in the same format as the examples below:
+  input_template: "</X1>\nQuestion: </X2>\nTrue or False?"
+  output_template:
+    0: "False"
+    1: "True"
+
