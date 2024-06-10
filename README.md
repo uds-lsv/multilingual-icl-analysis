@@ -34,7 +34,7 @@ CUDA: 11.8.0
 ## Code
 - `configs/`: configuration files for each task  
 - `experiments/`: reproduce results in the paper (See [experiments/README.md](https://github.com/uds-lsv/multilingual-icl-analysis/tree/master/experiments) for details.)
-- `openicl/`: modified version of [OpenICL](https://github.com/Shark-NLP/OpenICLhttps://github.com/Shark-NLP/OpenICL)
+- `openicl/`: modified version of [OpenICL](https://github.com/Shark-NLP/OpenICL)
 - `scripts/`: bash scripts that used by experiments
 - `arguments.py`: all input arguments
 - `eval_openai.py`: evaluation pipeline for OpenAI models
@@ -43,7 +43,7 @@ CUDA: 11.8.0
 - `utils.py`: utility functions, e.g., data processing 
 
 ## Acknowledgement
-- Thanks to the [OpenICL](https://github.com/Shark-NLP/OpenICLhttps://github.com/Shark-NLP/OpenICL) codebase 
+- Thanks to the [OpenICL](https://github.com/Shark-NLP/OpenICL) codebase 
 and Microsoft Azure. 
 
 
