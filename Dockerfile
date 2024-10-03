@@ -36,18 +36,18 @@ RUN python3 -m pip install plotly
 RUN python3 -m pip install pytablewriter
 
 # Install additional dependencies
-RUN python3 -m pip install transformers>=4.28.1
-RUN python3 -m pip install datasets>=2.7.1
-RUN python3 -m pip install evaluate>=0.3.0
-RUN python3 -m pip install faiss_gpu>=1.7.2
-RUN python3 -m pip install nltk>=3.8
-RUN python3 -m pip install openai>=0.27.1
-RUN python3 -m pip install rank_bm25>=0.2.2
-RUN python3 -m pip install requests>=2.28.1
-RUN python3 -m pip install sentence_transformers>=2.2.2
+RUN python3 -m pip install transformers==4.33.1
+RUN python3 -m pip install datasets==2.14.5
+RUN python3 -m pip install evaluate==0.4.0
+RUN python3 -m pip install faiss_gpu==1.7.2
+RUN python3 -m pip install nltk==3.8.1
+RUN python3 -m pip install openai==0.27.1
+RUN python3 -m pip install rank_bm25==0.2.2
+RUN python3 -m pip install requests==2.28.1
+RUN python3 -m pip install sentence_transformers==2.2.2
 RUN python3 -m pip install scikit-learn
-RUN python3 -m pip install accelerate
-RUN python3 -m pip install bitsandbytes
+RUN python3 -m pip install accelerate==0.22.0
+RUN python3 -m pip install bitsandbytes==0.41.1
 RUN python3 -m pip install tqdm
 RUN python3 -m pip install tiktoken
 RUN python3 -m pip install aiolimiter
