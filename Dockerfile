@@ -2,6 +2,7 @@
 # We are using NVIDIA NGC's PyTorch image here, see: https://ngc.nvidia.com/catalog/containers/nvidia:pytorch for latest version
 # See https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html#framework-matrix-2021 for installed python, pytorch, etc. versions
 
+# Works for A100 servers (V100 may fails in load_in_8bit=True, see https://github.com/uds-lsv/multilingual-icl-analysis/issues/1 )
 FROM nvcr.io/nvidia/pytorch:22.12-py3
 
 # Set path to CUDA
